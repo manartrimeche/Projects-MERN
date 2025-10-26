@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "mongoose": "^8.19.2"
+  }
+}
