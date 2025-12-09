@@ -7,6 +7,8 @@ import Register from './pages/Register';
 import Courses from './pages/Courses';
 import CourseDetails from './pages/CourseDetails';
 import Profile from './pages/Profile';
+import CourseAnalysis from './pages/CourseAnalysis';
+import GenerateDescription from './pages/GenerateDescription';
 
 function App() {
   return (
@@ -19,12 +21,28 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses/:id" element={<CourseDetails />} />
+        <Route
+          path="/courses/:id/analysis"
+          element={
+            <ProtectedRoute>
+              <CourseAnalysis />
+            </ProtectedRoute>
+          }
+        />
 
           <Route
             path="/profile"
             element={
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/generate-description"
+            element={
+              <ProtectedRoute>
+                <GenerateDescription />
               </ProtectedRoute>
             }
           />

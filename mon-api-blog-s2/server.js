@@ -21,6 +21,7 @@ const PORT = process.env.PORT || 5000;
 // Importation des fichiers de routes
 const articleRoutes = require('./routes/articleRoutes');
 const userRoutes = require('./routes/userRoutes');
+const aiRoutes = require('./routes/aiRoutes');
 
 // CORS: autoriser les appels depuis le front (projets séparés)
 // Définissez CORS_ORIGINS dans .env, ex: http://localhost:5173,http://localhost:3000
@@ -28,6 +29,7 @@ const allowedOrigins = (process.env.CORS_ORIGINS || '')
     .split(',')
     .map((s) => s.trim())
     .filter(Boolean);
+
 
 app.use(
     cors({
@@ -59,6 +61,9 @@ app.use('/api/articles', articleRoutes);
 
 // Toutes les routes commençant par /api/users seront gérées par userRoutes
 app.use('/api/users', userRoutes);
+
+// Toutes les routes commençant par /api/ai seront gérées par aiRoutes
+app.use('/api/ai', aiRoutes);
 
 
 // --- LANCEMENT DU SERVEUR ---

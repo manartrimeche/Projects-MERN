@@ -1,4 +1,4 @@
-const Article = require('../models/article');
+const Article = require('../models/User');
 // Fonction de test pour vérifier que l'API fonctionne correctement
 const testApi = (req, res) => {
     // Répond avec un statut 200 (OK) et un objet JSON

@@ -1,0 +1,330 @@
+{
+  "info": {
+    "_postman_id": "api-blog-mern-test",
+    "name": "API Blog MERN - Tests",
+    "description": "Collection de tests pour l'API Blog avec routes Articles, Users, et AI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "Test API - GET /",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": [""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Articles",
+      "item": [
+        {
+          "name": "GET - Tous les articles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/articles",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "articles"]
+            }
+          }
+        },
+        {
+          "name": "POST - Créer un article",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Mon premier article\",\n  \"content\": \"Ceci est le contenu de mon article.\",\n  \"author\": \"John Doe\",\n  \"category\": \"Tech\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/articles",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "articles"]
+            }
+          }
+        },
+        {
+          "name": "GET - Article par ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/articles/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "articles", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "REMPLACER_PAR_ID_ARTICLE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "PUT - Mettre à jour un article",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Article mis à jour\",\n  \"content\": \"Contenu mis à jour\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/articles/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "articles", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "REMPLACER_PAR_ID_ARTICLE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "DELETE - Supprimer un article",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/articles/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "articles", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "REMPLACER_PAR_ID_ARTICLE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "GET - Tous les utilisateurs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/users",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "users"]
+            }
+          }
+        },
+        {
+          "name": "POST - Créer un utilisateur",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"johndoe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"user\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/users",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "users"]
+            }
+          }
+        },
+        {
+          "name": "GET - Utilisateur par ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/users/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "users", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "REMPLACER_PAR_ID_USER"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "AI",
+      "item": [
+        {
+          "name": "POST - Analyser les avis (Protégé)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer your_token_here"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"courseId\": \"1\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/ai/analyze-reviews/course123",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "ai", "analyze-reviews", "course123"]
+            }
+          }
+        },
+        {
+          "name": "POST - Générer une description de cours (Protégé)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer your_token_here"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Introduction à Node.js\",\n  \"topics\": [\"JavaScript\", \"Serveurs\", \"APIs REST\"],\n  \"level\": \"beginner\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/ai/generate-description",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "ai", "generate-description"]
+            }
+          }
+        },
+        {
+          "name": "POST - Suggérer des cours similaires (Public)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"React Avancé\",\n  \"topics\": [\"React\", \"JavaScript\", \"Frontend\"]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/ai/similar-courses/course456",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "ai", "similar-courses", "course456"]
+            }
+          }
+        },
+        {
+          "name": "POST - Générer une bio (Protégé)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer your_token_here"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Marie Dupont\",\n  \"expertise\": \"Machine Learning et IA\",\n  \"style\": \"inspirant et professionnel\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/ai/generate-bio",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "ai", "generate-bio"]
+            }
+          }
+        },
+        {
+          "name": "GET - Insights de la plateforme (Protégé)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer your_token_here"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/ai/platform-insights",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "ai", "platform-insights"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
