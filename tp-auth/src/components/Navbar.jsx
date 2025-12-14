@@ -5,44 +5,43 @@ function Navbar() {
   const { user, logout, isAuthenticated } = useAuth();
 
   return (
-    <nav
-      style={{
-        backgroundColor: '#2c3e50',
-        padding: '15px 30px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-      }}
-    >
-      <div style={{ display: 'flex', gap: '20px' }}>
-        <Link
-          to="/"
-          style={{ color: 'white', textDecoration: 'none' }}
-        >
-          Accueil
+    <nav style={{
+      backgroundColor: '#2c3e50',
+      padding: '15px 30px',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      flexWrap: 'wrap',
+      gap: '15px'
+    }}>
+      <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+        <Link to="/" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold' }}>
+          🎓 Accueil
         </Link>
-        <Link
-          to="/courses"
-          style={{ color: 'white', textDecoration: 'none' }}
-        >
-          Cours
+        <Link to="/courses" style={{ color: 'white', textDecoration: 'none' }}>
+          📚 Cours
+        </Link>
+        <Link to="/chatbot" style={{ color: 'white', textDecoration: 'none' }}>
+          💬 Chatbot
         </Link>
       </div>
 
-      <div
-        style={{
-          display: 'flex',
-          gap: '15px',
-          alignItems: 'center',
-        }}
-      >
+      <div style={{ display: 'flex', gap: '15px', alignItems: 'center', flexWrap: 'wrap' }}>
         {isAuthenticated ? (
           <>
-            <Link
-              to="/profile"
-              style={{ color: 'white', textDecoration: 'none' }}
-            >
-              Profil ({user.username})
+            <Link to="/personalized-courses" style={{ color: 'white', textDecoration: 'none' }}>
+              🎯 Cours Recommandés
+            </Link>
+            {user.role === 'admin' && (
+              <Link to="/admin-dashboard" style={{ color: 'white', textDecoration: 'none' }}>
+                📊 Dashboard
+              </Link>
+            )}
+            <Link to="/profile" style={{ color: 'white', textDecoration: 'none' }}>
+              👤 Profil ({user.username})
+            </Link>
+            <Link to="/my-reviews" style={{ color: 'white', textDecoration: 'none' }}>
+              ⭐ Mes Reviews
             </Link>
             <button
               onClick={logout}
@@ -52,7 +51,7 @@ function Navbar() {
                 color: 'white',
                 border: 'none',
                 borderRadius: '5px',
-                cursor: 'pointer',
+                cursor: 'pointer'
               }}
             >
               Déconnexion
@@ -60,16 +59,10 @@ function Navbar() {
           </>
         ) : (
           <>
-            <Link
-              to="/login"
-              style={{ color: 'white', textDecoration: 'none' }}
-            >
+            <Link to="/login" style={{ color: 'white', textDecoration: 'none' }}>
               Connexion
             </Link>
-            <Link
-              to="/register"
-              style={{ color: 'white', textDecoration: 'none' }}
-            >
+            <Link to="/register" style={{ color: 'white', textDecoration: 'none' }}>
               Inscription
             </Link>
           </>

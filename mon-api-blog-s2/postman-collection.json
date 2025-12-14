@@ -1,330 +1,390 @@
 {
   "info": {
-    "_postman_id": "api-blog-mern-test",
-    "name": "API Blog MERN - Tests",
-    "description": "Collection de tests pour l'API Blog avec routes Articles, Users, et AI",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "name": "MERN TP9 - Complete API Test Data",
+    "description": "Données complètes pour tester l'API backend et les fonctionnalités IA",
+    "version": "2.0.0"
   },
-  "item": [
+  
+  "authentication": {
+    "register": [
+      {
+        "username": "admin",
+        "email": "admin@example.com",
+        "password": "password123",
+        "confirmPassword": "password123"
+      },
+      {
+        "username": "john_doe",
+        "email": "john@example.com",
+        "password": "password123",
+        "confirmPassword": "password123"
+      },
+      {
+        "username": "jane_smith",
+        "email": "jane@example.com",
+        "password": "password123",
+        "confirmPassword": "password123"
+      },
+      {
+        "username": "bob_wilson",
+        "email": "bob@example.com",
+        "password": "password123",
+        "confirmPassword": "password123"
+      },
+      {
+        "username": "alice_brown",
+        "email": "alice@example.com",
+        "password": "password123",
+        "confirmPassword": "password123"
+      }
+    ],
+    "login": {
+      "email": "admin@example.com",
+      "password": "password123"
+    }
+  },
+
+  "courses": [
     {
-      "name": "Health Check",
-      "item": [
-        {
-          "name": "Test API - GET /",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:5000/",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "5000",
-              "path": [""]
-            }
-          }
-        }
-      ]
+      "title": "Introduction à React",
+      "description": "Apprenez les bases de React, les composants, le state et les props",
+      "instructor": "John Doe"
     },
     {
-      "name": "Articles",
-      "item": [
-        {
-          "name": "GET - Tous les articles",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:5000/api/articles",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "5000",
-              "path": ["api", "articles"]
-            }
-          }
-        },
-        {
-          "name": "POST - Créer un article",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"Mon premier article\",\n  \"content\": \"Ceci est le contenu de mon article.\",\n  \"author\": \"John Doe\",\n  \"category\": \"Tech\"\n}"
-            },
-            "url": {
-              "raw": "http://localhost:5000/api/articles",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "5000",
-              "path": ["api", "articles"]
-            }
-          }
-        },
-        {
-          "name": "GET - Article par ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:5000/api/articles/:id",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "5000",
-              "path": ["api", "articles", ":id"],
-              "variable": [
-                {
-                  "key": "id",
-                  "value": "REMPLACER_PAR_ID_ARTICLE"
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "PUT - Mettre à jour un article",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"Article mis à jour\",\n  \"content\": \"Contenu mis à jour\"\n}"
-            },
-            "url": {
-              "raw": "http://localhost:5000/api/articles/:id",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "5000",
-              "path": ["api", "articles", ":id"],
-              "variable": [
-                {
-                  "key": "id",
-                  "value": "REMPLACER_PAR_ID_ARTICLE"
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "DELETE - Supprimer un article",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:5000/api/articles/:id",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "5000",
-              "path": ["api", "articles", ":id"],
-              "variable": [
-                {
-                  "key": "id",
-                  "value": "REMPLACER_PAR_ID_ARTICLE"
-                }
-              ]
-            }
-          }
-        }
-      ]
+      "title": "Node.js Avancé",
+      "description": "Maîtrisez Node.js et Express pour créer des APIs robustes",
+      "instructor": "Jane Smith"
     },
     {
-      "name": "Users",
-      "item": [
-        {
-          "name": "GET - Tous les utilisateurs",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:5000/api/users",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "5000",
-              "path": ["api", "users"]
-            }
-          }
-        },
-        {
-          "name": "POST - Créer un utilisateur",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"username\": \"johndoe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"user\"\n}"
-            },
-            "url": {
-              "raw": "http://localhost:5000/api/users",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "5000",
-              "path": ["api", "users"]
-            }
-          }
-        },
-        {
-          "name": "GET - Utilisateur par ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:5000/api/users/:id",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "5000",
-              "path": ["api", "users", ":id"],
-              "variable": [
-                {
-                  "key": "id",
-                  "value": "REMPLACER_PAR_ID_USER"
-                }
-              ]
-            }
-          }
-        }
-      ]
+      "title": "MongoDB pour Débutants",
+      "description": "Découvrez MongoDB et les bases de données NoSQL",
+      "instructor": "Bob Johnson"
     },
     {
-      "name": "AI",
-      "item": [
-        {
-          "name": "POST - Analyser les avis (Protégé)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer your_token_here"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"courseId\": \"1\"\n}"
-            },
-            "url": {
-              "raw": "http://localhost:5000/api/ai/analyze-reviews/course123",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "5000",
-              "path": ["api", "ai", "analyze-reviews", "course123"]
-            }
-          }
-        },
-        {
-          "name": "POST - Générer une description de cours (Protégé)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer your_token_here"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"Introduction à Node.js\",\n  \"topics\": [\"JavaScript\", \"Serveurs\", \"APIs REST\"],\n  \"level\": \"beginner\"\n}"
-            },
-            "url": {
-              "raw": "http://localhost:5000/api/ai/generate-description",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "5000",
-              "path": ["api", "ai", "generate-description"]
-            }
-          }
-        },
-        {
-          "name": "POST - Suggérer des cours similaires (Public)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"React Avancé\",\n  \"topics\": [\"React\", \"JavaScript\", \"Frontend\"]\n}"
-            },
-            "url": {
-              "raw": "http://localhost:5000/api/ai/similar-courses/course456",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "5000",
-              "path": ["api", "ai", "similar-courses", "course456"]
-            }
-          }
-        },
-        {
-          "name": "POST - Générer une bio (Protégé)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer your_token_here"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"Marie Dupont\",\n  \"expertise\": \"Machine Learning et IA\",\n  \"style\": \"inspirant et professionnel\"\n}"
-            },
-            "url": {
-              "raw": "http://localhost:5000/api/ai/generate-bio",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "5000",
-              "path": ["api", "ai", "generate-bio"]
-            }
-          }
-        },
-        {
-          "name": "GET - Insights de la plateforme (Protégé)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer your_token_here"
-              }
-            ],
-            "url": {
-              "raw": "http://localhost:5000/api/ai/platform-insights",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "5000",
-              "path": ["api", "ai", "platform-insights"]
-            }
-          }
-        }
+      "title": "JavaScript ES6+",
+      "description": "Toutes les fonctionnalités modernes de JavaScript",
+      "instructor": "Alice Brown"
+    },
+    {
+      "title": "CSS Grid et Flexbox",
+      "description": "Maîtrisez les layouts modernes avec CSS",
+      "instructor": "Charlie Wilson"
+    },
+    {
+      "title": "Vue.js 3 Complet",
+      "description": "Framework progressif pour construire des interfaces",
+      "instructor": "Diana Prince"
+    },
+    {
+      "title": "TypeScript Essentiel",
+      "description": "JavaScript avec des types statiques",
+      "instructor": "Ethan Hunt"
+    },
+    {
+      "title": "React Router & Navigation",
+      "description": "Gérez la navigation dans vos applications React",
+      "instructor": "Fiona Gallagher"
+    },
+    {
+      "title": "Redux State Management",
+      "description": "Gérez l'état de vos applications complexes",
+      "instructor": "George Miller"
+    },
+    {
+      "title": "REST API avec Express",
+      "description": "Créez des APIs REST professionnelles",
+      "instructor": "Hannah Montana"
+    },
+    {
+      "title": "GraphQL Moderne",
+      "description": "Alternative moderne aux REST APIs",
+      "instructor": "Ian Malcolm"
+    },
+    {
+      "title": "Docker pour Développeurs",
+      "description": "Containerisez vos applications",
+      "instructor": "Julia Roberts"
+    },
+    {
+      "title": "Testing avec Jest",
+      "description": "Écrivez des tests unitaires et d'intégration",
+      "instructor": "Kevin Hart"
+    },
+    {
+      "title": "Python pour Data Science",
+      "description": "Maîtrisez Python pour l'analyse de données",
+      "instructor": "Dr. Marie Laurent"
+    },
+    {
+      "title": "Intelligence Artificielle pour Débutants",
+      "description": "Découvrez les fondamentaux de l'IA et du Machine Learning",
+      "instructor": "Dr. Alice Chen"
+    }
+  ],
+
+  "reviews": {
+    "positive": [
+      {
+        "rating": 5,
+        "comment": "Excellent cours! Les explications sont très claires et les exemples pratiques m'ont vraiment aidé à comprendre."
+      },
+      {
+        "rating": 5,
+        "comment": "Ce cours a transformé ma compréhension de React. L'instructeur explique les concepts complexes de manière simple et les exercices sont excellents."
+      },
+      {
+        "rating": 5,
+        "comment": "Le meilleur cours que j'ai suivi sur cette plateforme. L'instructeur maîtrise vraiment son sujet et sait le transmettre."
+      },
+      {
+        "rating": 5,
+        "comment": "Incroyable! Non seulement j'ai appris la technologie, mais j'ai aussi compris les meilleures pratiques du développement moderne. Hautement recommandé!"
+      }
+    ],
+    "good": [
+      {
+        "rating": 4,
+        "comment": "Très bon cours dans l'ensemble. J'aurais apprécié des quiz à la fin de chaque section et peut-être un projet final plus ambitieux."
+      },
+      {
+        "rating": 4,
+        "comment": "Cours bien structuré avec de bons exemples. Quelques sections pourraient être plus détaillées mais globalement très satisfait."
+      },
+      {
+        "rating": 4,
+        "comment": "Bon contenu, mais j'aurais aimé plus d'exercices pratiques pour consolider les connaissances."
+      }
+    ],
+    "neutral": [
+      {
+        "rating": 3,
+        "comment": "Le contenu est correct mais j'attendais plus d'exemples concrets. Bon pour débuter mais manque de profondeur."
+      },
+      {
+        "rating": 3,
+        "comment": "Cours moyen. Certaines parties sont excellentes, d'autres un peu superficielles."
+      }
+    ],
+    "negative": [
+      {
+        "rating": 2,
+        "comment": "Le rythme est trop rapide pour les débutants. Certains concepts mériteraient plus d'explications et d'exemples."
+      },
+      {
+        "rating": 2,
+        "comment": "Déçu par le manque de support et les vidéos parfois floues. Le contenu est là mais la forme laisse à désirer."
+      }
+    ]
+  },
+
+  "profiles": [
+    {
+      "bio": "Développeur passionné par les nouvelles technologies et l'apprentissage continu",
+      "website": "https://monsite.com"
+    },
+    {
+      "bio": "Développeur Full Stack avec 5 ans d'expérience en React et Node.js",
+      "website": "https://nouveau-site.com"
+    },
+    {
+      "bio": "Designer UI/UX spécialisé dans les interfaces modernes et accessibles",
+      "website": "https://portfolio-design.com"
+    },
+    {
+      "bio": "Data Scientist passionné par le Machine Learning et la visualisation de données",
+      "website": "https://data-portfolio.com"
+    },
+    {
+      "bio": "Étudiant en informatique, toujours curieux d'apprendre de nouvelles technologies",
+      "website": "https://github.com/student-dev"
+    }
+  ],
+
+  "ai_features": {
+    "generate_description": [
+      {
+        "title": "Python pour Data Science",
+        "instructor": "Dr. Marie Laurent",
+        "keywords": ["Python", "Machine Learning", "Pandas", "NumPy", "Visualisation"]
+      },
+      {
+        "title": "UI/UX Design Moderne",
+        "instructor": "Sophie Martin",
+        "keywords": ["Figma", "Design System", "Prototypage", "User Research"]
+      },
+      {
+        "title": "Microservices avec Node.js",
+        "instructor": "Thomas Dubois",
+        "keywords": ["Microservices", "Docker", "Kubernetes", "API Gateway", "Event-Driven"]
+      },
+      {
+        "title": "Cybersécurité Web",
+        "instructor": "Marc Dupont",
+        "keywords": ["OWASP", "Sécurité", "Pen Testing", "SSL/TLS", "Authentication"]
+      },
+      {
+        "title": "DevOps avec CI/CD",
+        "instructor": "Sarah Johnson",
+        "keywords": ["Jenkins", "GitLab CI", "Automation", "Infrastructure as Code", "Monitoring"]
+      },
+      {
+        "title": "Advanced TypeScript Patterns",
+        "instructor": "John Doe",
+        "keywords": ["TypeScript", "Design Patterns", "Advanced Types", "Generics", "Decorators"]
+      },
+      {
+        "title": "Flutter Mobile Development",
+        "instructor": "Emma Watson",
+        "keywords": ["Flutter", "Dart", "Mobile", "Cross-Platform", "Firebase"]
+      },
+      {
+        "title": "Cloud Architecture avec AWS",
+        "instructor": "Michael Chen",
+        "keywords": ["AWS", "Lambda", "S3", "EC2", "Serverless", "CloudFormation"]
+      }
+    ],
+    "generate_bio": [
+      {
+        "interests": "Développement web full-stack, React, Node.js, architecture cloud",
+        "experience": "5 ans d'expérience en développement d'applications web",
+        "goals": "Devenir architecte solutions et contribuer à des projets open-source"
+      },
+      {
+        "interests": "UI/UX Design, Design Systems, Accessibilité, Motion Design",
+        "experience": "3 ans en tant que designer produit dans des startups tech",
+        "goals": "Créer des expériences utilisateur inclusives et mémorables"
+      },
+      {
+        "interests": "Machine Learning, Data Visualization, Python, Statistics",
+        "experience": "Diplômé en sciences des données, 2 ans d'expérience en analyse de données",
+        "goals": "Résoudre des problèmes business complexes avec l'IA"
+      },
+      {
+        "interests": "Programmation, jeux vidéo, intelligence artificielle",
+        "experience": "Étudiant en informatique passionné par le code"
+      },
+      {
+        "interests": "DevOps, Cloud Computing, Automation, Infrastructure",
+        "experience": "7 ans d'expérience en administration système et DevOps",
+        "goals": "Optimiser les pipelines de déploiement et réduire les coûts d'infrastructure"
+      },
+      {
+        "interests": "Cybersécurité, Ethical Hacking, Network Security",
+        "experience": "Certifié CEH, 4 ans en pentesting et audits de sécurité",
+        "goals": "Aider les entreprises à sécuriser leurs infrastructures"
+      },
+      {
+        "interests": "Mobile Development, iOS, Swift, Flutter",
+        "experience": "2 ans de développement d'applications mobiles",
+        "goals": "Créer des applications mobiles innovantes qui changent la vie des gens"
+      },
+      {
+        "interests": "Backend Development, Microservices, Databases, Performance",
+        "experience": "6 ans en développement backend et architecture de systèmes distribués",
+        "goals": "Concevoir des systèmes scalables et performants"
+      }
+    ]
+  },
+
+  "test_scenarios": {
+    "scenario_1_complete_workflow": {
+      "description": "Workflow complet d'un utilisateur de A à Z",
+      "steps": [
+        "1. POST /api/auth/register - Créer un compte",
+        "2. POST /api/auth/login - Se connecter",
+        "3. GET /api/courses - Voir tous les cours",
+        "4. POST /api/courses/{id}/enroll - S'inscrire à un cours",
+        "5. POST /api/courses/{id}/reviews - Ajouter une review",
+        "6. GET /api/users/{userId}/reviews - Voir mes reviews",
+        "7. POST /api/users/{userId}/profile - Créer mon profil",
+        "8. POST /api/ai/generate-bio - Générer une bio avec IA",
+        "9. PUT /api/users/{userId}/profile - Mettre à jour le profil avec la bio IA"
+      ]
+    },
+    "scenario_2_instructor_workflow": {
+      "description": "Workflow d'un instructeur qui crée des cours",
+      "steps": [
+        "1. POST /api/auth/register - Créer un compte instructeur",
+        "2. POST /api/auth/login - Se connecter",
+        "3. POST /api/ai/generate-description - Générer une description avec IA",
+        "4. POST /api/courses - Créer un cours avec la description IA",
+        "5. GET /api/courses/{id}/students - Voir les étudiants inscrits",
+        "6. GET /api/courses/{id}/reviews - Voir les reviews du cours",
+        "7. POST /api/ai/analyze-reviews/{id} - Analyser les reviews avec IA",
+        "8. Itérer et améliorer le cours basé sur l'analyse"
+      ]
+    },
+    "scenario_3_admin_workflow": {
+      "description": "Workflow d'un administrateur de la plateforme",
+      "steps": [
+        "1. POST /api/auth/login - Se connecter en tant qu'admin",
+        "2. GET /api/users - Lister tous les utilisateurs",
+        "3. GET /api/courses - Lister tous les cours",
+        "4. GET /api/ai/platform-insights - Obtenir des insights globaux",
+        "5. Identifier les cours populaires et ceux qui nécessitent amélioration",
+        "6. Pour chaque cours problématique: POST /api/ai/analyze-reviews/{id}",
+        "7. Prendre des décisions stratégiques basées sur les données IA"
+      ]
+    },
+    "scenario_4_student_discovery": {
+      "description": "Étudiant découvrant de nouveaux cours",
+      "steps": [
+        "1. GET /api/courses - Voir tous les cours disponibles",
+        "2. GET /api/courses/{id} - Voir les détails d'un cours intéressant",
+        "3. GET /api/courses/{id}/reviews - Lire les avis",
+        "4. POST /api/ai/similar-courses/{id} - Trouver des cours similaires",
+        "5. POST /api/courses/{id}/enroll - S'inscrire au cours",
+        "6. Après avoir suivi: POST /api/courses/{id}/reviews - Laisser un avis"
       ]
     }
-  ]
+  },
+
+  "postman_environment_variables": {
+    "base_url": "http://localhost:3000/api",
+    "jwt_token": "",
+    "user_id": "",
+    "test_course_id": ""
+  },
+
+  "postman_collection_scripts": {
+    "login_test_script": "if (pm.response.code === 200) {\n    const response = pm.response.json();\n    pm.environment.set('jwt_token', response.token);\n    pm.environment.set('user_id', response.user.id);\n    console.log('✅ Token saved:', response.token);\n}",
+    "register_test_script": "if (pm.response.code === 201) {\n    const response = pm.response.json();\n    pm.environment.set('jwt_token', response.token);\n    pm.environment.set('user_id', response.user._id);\n    console.log('✅ User registered and token saved');\n}",
+    "create_course_test_script": "if (pm.response.code === 201) {\n    const response = pm.response.json();\n    pm.environment.set('test_course_id', response._id);\n    console.log('✅ Course created with ID:', response._id);\n}"
+  },
+
+  "quick_test_data": {
+    "description": "Données rapides pour tester rapidement chaque endpoint",
+    "auth_register": {
+      "username": "testuser",
+      "email": "test@example.com",
+      "password": "test123",
+      "confirmPassword": "test123"
+    },
+    "auth_login": {
+      "email": "test@example.com",
+      "password": "test123"
+    },
+    "create_course": {
+      "title": "Test Course",
+      "description": "This is a test course",
+      "instructor": "Test Instructor"
+    },
+    "add_review": {
+      "rating": 5,
+      "comment": "Great course!"
+    },
+    "create_profile": {
+      "bio": "Test bio",
+      "website": "https://test.com"
+    },
+    "generate_description": {
+      "title": "Test AI Course",
+      "instructor": "AI Instructor",
+      "keywords": ["Test", "AI", "Learning"]
+    },
+    "generate_bio": {
+      "interests": "Testing, Development",
+      "experience": "5 years testing"
+    }
+  }
 }

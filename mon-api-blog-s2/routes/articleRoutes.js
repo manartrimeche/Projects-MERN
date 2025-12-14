@@ -1,8 +1,12 @@
-const express=require('express');
-const router=express.Router();
-const {getAllArticles,createArticle}=require('../controllers/articleController');
-router.get('/',getAllArticles);
-// Route POST pour /api/articles (devient / dans ce routeur)
-router.post('/',createArticle);
-// On exporte le routeur pour l’utiliser dans server.js
-module.exports=router;
+const express = require('express');
+const router = express.Router();
+const { getAllArticles, createArticle, getArticleById, updateArticle, deleteArticle } = require('../controllers/articleController');
+
+// Routes pour les articles
+router.get('/', getAllArticles);
+router.post('/', createArticle);
+router.get('/:id', getArticleById);
+router.put('/:id', updateArticle);
+router.delete('/:id', deleteArticle);
+
+module.exports = router;

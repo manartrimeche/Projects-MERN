@@ -1,33 +1,61 @@
-// Tableau en mémoire pour stocker les utilisateurs (remarque : les données seront perdues au redémarrage du serveur)
-const users = [];
+const User = require('../models/User');
 
 // Fonction pour récupérer tous les utilisateurs
-const getAllUsers = (req, res) => {
-    // Répond avec un statut 200 (OK) et un objet JSON contenant la liste des utilisateurs
-    res.status(200).json({ 
-        message: "Récupération de tous les utilisateurs", 
-        success: true, 
-        users // Inclut le tableau des utilisateurs dans la réponse
-    });
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find().select('-password');
+        res.status(200).json({ 
+            message: "Récupération de tous les utilisateurs", 
+            success: true, 
+            users
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Erreur lors de la récupération des utilisateurs', error: error.message });
+    }
 }
 
 // Fonction pour créer un nouvel utilisateur
-const createUser = (req, res) => {
-    // Récupère les données de l'utilisateur depuis le corps de la requête
-    const userData = req.body;
-    
-    // Affiche les données reçues dans la console pour le débogage
-    console.log('Données reçues par le controller:', userData);
-    
-    // Ajoute le nouvel utilisateur au tableau avec un ID généré (timestamp actuel)
-    users.push({ id: Date.now(), ...userData });
-    
-    // Répond avec un statut 201 (Created) et un objet JSON de confirmation
-    res.status(201).json({
-        message: 'Utilisateur créé avec succès via controller!',
-        user: { id: Date.now(), ...userData } // Retourne l'utilisateur créé
-    });
+const createUser = async (req, res) => {
+    try {
+        const { username, email, password } = req.body;
+        
+        console.log('Données reçues par le controller:', req.body);
+        
+        const newUser = new User({
+            username,
+            email,
+            password
+        });
+        
+        const savedUser = await newUser.save();
+        
+        res.status(201).json({
+            message: 'Utilisateur créé avec succès!',
+            user: {
+                id: savedUser._id,
+                username: savedUser.username,
+                email: savedUser.email
+            }
+        });
+    } catch (error) {
+        res.status(400).json({ 
+            message: 'Erreur lors de la création de l\'utilisateur', 
+            error: error.message 
+        });
+    }
 }
 
-// Exporte les fonctions pour les rendre disponibles dans d'autres fichiers
-module.exports = { getAllUsers, createUser };
+// Fonction pour récupérer un utilisateur par ID
+const getUserById = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id).select('-password');
+        if (!user) {
+            return res.status(404).json({ message: 'Utilisateur non trouvé' });
+        }
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: 'Erreur lors de la récupération de l\'utilisateur', error: error.message });
+    }
+}
+
+module.exports = { getAllUsers, createUser, getUserById };

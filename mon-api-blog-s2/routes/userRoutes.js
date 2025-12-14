@@ -1,19 +1,10 @@
-// Importe le framework Express
 const express = require('express');
-
-// Crée un nouveau routeur Express pour gérer les routes
 const router = express.Router();
+const { getAllUsers, createUser, getUserById } = require('../controllers/userController');
 
-// Importe les fonctions du contrôleur utilisateur
-const { getAllUsers, createUser } = require('../controllers/userController');
-
-// Définit la route GET sur le chemin racine ('/') 
-// Quand une requête GET est faite sur '/', la fonction getAllUsers est appelée
+// Routes pour les utilisateurs
 router.get('/', getAllUsers);
-
-// Définit la route POST sur le chemin racine ('/')
-// Quand une requête POST est faite sur '/', la fonction createUser est appelée
 router.post('/', createUser);
+router.get('/:id', getUserById);
 
-// Exporte le routeur pour l'utiliser dans d'autres fichiers (comme app.js)
 module.exports = router;
