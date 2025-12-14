@@ -21,6 +21,32 @@ const createUser = async (req, res) => {
         
         console.log('Données reçues par le controller:', req.body);
         
+        // Vérifier que tous les champs requis sont présents
+        if (!username || !email || !password) {
+            return res.status(400).json({ 
+                message: 'Tous les champs sont requis (username, email, password)',
+                success: false
+            });
+        }
+        
+        // Vérifier si l'email existe déjà
+        const existingEmail = await User.findOne({ email });
+        if (existingEmail) {
+            return res.status(400).json({ 
+                message: 'Cet email est déjà utilisé',
+                success: false
+            });
+        }
+        
+        // Vérifier si le username existe déjà
+        const existingUsername = await User.findOne({ username });
+        if (existingUsername) {
+            return res.status(400).json({ 
+                message: 'Ce nom d\'utilisateur est déjà pris',
+                success: false
+            });
+        }
+        
         const newUser = new User({
             username,
             email,
@@ -31,6 +57,7 @@ const createUser = async (req, res) => {
         
         res.status(201).json({
             message: 'Utilisateur créé avec succès!',
+            success: true,
             user: {
                 id: savedUser._id,
                 username: savedUser.username,
@@ -38,8 +65,10 @@ const createUser = async (req, res) => {
             }
         });
     } catch (error) {
+        console.error('Erreur création utilisateur:', error);
         res.status(400).json({ 
             message: 'Erreur lors de la création de l\'utilisateur', 
+            success: false,
             error: error.message 
         });
     }
